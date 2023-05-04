@@ -1,7 +1,9 @@
 package me.silvernine.tutorial.controller;
 
 import me.silvernine.tutorial.dto.UserDto;
+import me.silvernine.tutorial.entity.SensorData;
 import me.silvernine.tutorial.service.UserService;
+import me.silvernine.tutorial.service.SensorDataService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +17,11 @@ import java.io.IOException;
 @RequestMapping("/api")
 public class UserController {
     private final UserService userService;
+    private final SensorDataService sensorDataService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, SensorDataService sensorDataService) {
         this.userService = userService;
+        this.sensorDataService = sensorDataService;
     }
 
     @GetMapping("/hello")
@@ -36,6 +40,15 @@ public class UserController {
     ) {
         return ResponseEntity.ok(userService.signup(userDto));
     }
+
+    @PostMapping("/sensor-data")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<String> createSensorData(@RequestBody SensorData sensorData) {
+        System.out.println(sensorData);
+        SensorData createdSensorData = sensorDataService.createSensorData(sensorData);
+        return ResponseEntity.ok("Successfully created sensor data with id: " + createdSensorData.getId());
+    }
+
 
     @GetMapping("/user")
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
