@@ -1,4 +1,4 @@
-# JWT_API_Backend
+# BeMyPlant!_Backend
 
 BeMyPlant! 서비스를 위한 JWT를 이용한 로그인 API 서버
 
