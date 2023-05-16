@@ -1,7 +1,9 @@
 package me.silvernine.tutorial.controller;
 
+import jakarta.transaction.Transactional;
 import me.silvernine.tutorial.dto.UserDto;
 import me.silvernine.tutorial.entity.SensorData;
+import me.silvernine.tutorial.entity.User;
 import me.silvernine.tutorial.repository.UserRepository;
 import me.silvernine.tutorial.service.UserService;
 import me.silvernine.tutorial.service.SensorDataService;
@@ -113,33 +115,31 @@ public class UserController {
 
     @Autowired
     private MongoTemplate mongoTemplate;
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Transactional
     @DeleteMapping("/withdrawal")
     @PreAuthorize("hasAnyRole('USER')")
     public ResponseEntity<String> withdrawal(HttpServletRequest request) {
-        String user = SecurityUtil.getCurrentUsername().orElse("unknown");
-
-        // H2 데이터베이스에서 해당 사용자 컬럼 삭제
-
-        // "user" 테이블에서 "username"과 일치하는 사용자의 "user_id" 조회
-        String getUserIdQuery = "SELECT user_id FROM \"user\" WHERE username = ?";
-        Long user_id_cl = jdbcTemplate.queryForObject(getUserIdQuery, Long.class, user);
+        String username = SecurityUtil.getCurrentUsername().orElse("unknown");
 
         // user_authority 테이블에서 해당 사용자의 권한 정보 삭제
-        String deleteAuthorityQuery = "DELETE FROM user_authority WHERE user_id = ?";
-        jdbcTemplate.update(deleteAuthorityQuery, user_id_cl);
+        String deleteAuthorityQuery = "DELETE FROM user_authority WHERE user_id = (SELECT user_id FROM \"user\" WHERE username = ?)";
+        jdbcTemplate.update(deleteAuthorityQuery, username);
 
         // user 테이블에서 해당 사용자 삭제
         String deleteUserQuery = "DELETE FROM \"user\" WHERE username = ?";
-        jdbcTemplate.update(deleteUserQuery, user);
+        jdbcTemplate.update(deleteUserQuery, username);
 
-        // MongoDB에서 해당 사용자 컬렉션 삭제
-        mongoTemplate.dropCollection(user);
+        // MongoDB에서 해당 사용자 데이터 삭제
+        Query mongoQuery = new Query(Criteria.where("username").is(username));
+        mongoTemplate.remove(mongoQuery, User.class);
 
         return ResponseEntity.ok("Withdrawal successful");
     }
+
 
 
 
