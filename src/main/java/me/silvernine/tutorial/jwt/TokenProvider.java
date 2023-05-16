@@ -13,6 +13,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import java.security.SecureRandom;
 
 import java.security.Key;
 import java.util.Arrays;
@@ -29,10 +31,20 @@ public class TokenProvider implements InitializingBean {
     private final long tokenValidityInMilliseconds;
     private Key key;
 
+
+
     public TokenProvider(
             @Value("${jwt.secret}") String secret,
             @Value("${jwt.token-validity-in-seconds}") long tokenValidityInSeconds) {
+        /*
+        SecureRandom scrandom = new SecureRandom();
+        byte[] bytes = new byte[64];
+        scrandom.nextBytes(bytes);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        this.secret = encoder.encode(new String(bytes));
+         */
         this.secret = secret;
+
         this.tokenValidityInMilliseconds = tokenValidityInSeconds * 1000;
     }
 
