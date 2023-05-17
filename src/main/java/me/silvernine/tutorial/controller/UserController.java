@@ -3,8 +3,6 @@ package me.silvernine.tutorial.controller;
 import jakarta.transaction.Transactional;
 import me.silvernine.tutorial.dto.UserDto;
 import me.silvernine.tutorial.entity.SensorData;
-import me.silvernine.tutorial.entity.User;
-import me.silvernine.tutorial.repository.UserRepository;
 import me.silvernine.tutorial.service.UserService;
 import me.silvernine.tutorial.service.SensorDataService;
 import me.silvernine.tutorial.util.SecurityUtil;
@@ -113,6 +111,7 @@ public class UserController {
         return ResponseEntity.ok(userService.getUserWithAuthorities(username));
     }
 
+    //회원 탈퇴
     @Autowired
     private MongoTemplate mongoTemplate;
 
@@ -126,7 +125,8 @@ public class UserController {
         String username = SecurityUtil.getCurrentUsername().orElse("unknown");
 
         // user_authority 테이블에서 해당 사용자의 권한 정보 삭제
-        String deleteAuthorityQuery = "DELETE FROM user_authority WHERE user_id = (SELECT user_id FROM \"user\" WHERE username = ?)";
+        String deleteAuthorityQuery = "DELETE FROM user_authority " +
+                "WHERE user_id = (SELECT user_id FROM \"user\" WHERE username = ?)";
         jdbcTemplate.update(deleteAuthorityQuery, username);
 
         // user 테이블에서 해당 사용자 삭제
@@ -134,12 +134,10 @@ public class UserController {
         jdbcTemplate.update(deleteUserQuery, username);
 
         // MongoDB에서 해당 사용자 데이터 삭제
-        Query mongoQuery = new Query(Criteria.where("username").is(username));
-        mongoTemplate.remove(mongoQuery, User.class);
+        mongoTemplate.dropCollection(username);
 
         return ResponseEntity.ok("Withdrawal successful");
     }
-
 
 
 
