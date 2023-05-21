@@ -126,11 +126,11 @@ public class UserController {
 
         // user_authority 테이블에서 해당 사용자의 권한 정보 삭제
         String deleteAuthorityQuery = "DELETE FROM user_authority " +
-                "WHERE user_id = (SELECT user_id FROM \"user\" WHERE username = ?)";
+                "WHERE user_id = (SELECT user_id FROM userinfo WHERE username = ?)";
         jdbcTemplate.update(deleteAuthorityQuery, username);
 
         // user 테이블에서 해당 사용자 삭제
-        String deleteUserQuery = "DELETE FROM \"user\" WHERE username = ?";
+        String deleteUserQuery = "DELETE FROM userinfo WHERE username = ?";
         jdbcTemplate.update(deleteUserQuery, username);
 
         // MongoDB에서 해당 사용자 데이터 삭제

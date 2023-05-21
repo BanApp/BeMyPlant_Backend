@@ -5,13 +5,13 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "`user`")
+@Table(name = "userinfo")
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class UserInfo {
 
     @Id
     @Column(name = "user_id")
@@ -24,8 +24,14 @@ public class User {
     @Column(name = "password", length = 100)
     private String password;
 
-    @Column(name = "nickname", length = 50)
-    private String nickname;
+    @Column(name = "phones", length = 50)
+    private String phones;
+
+    @Column(name = "r_name", length = 50)
+    private String r_name;
+
+    @Column(name = "cre_date", length = 50)
+    private String cre_date;
 
     @Column(name = "activated")
     private boolean activated;

@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Optional;
 import me.silvernine.tutorial.dto.UserDto;
 import me.silvernine.tutorial.entity.Authority;
-import me.silvernine.tutorial.entity.User;
+import me.silvernine.tutorial.entity.UserInfo;
 import me.silvernine.tutorial.exception.DuplicateMemberException;
 import me.silvernine.tutorial.exception.NotFoundMemberException;
 import me.silvernine.tutorial.repository.UserRepository;
@@ -33,10 +33,12 @@ public class UserService {
                 .authorityName("ROLE_USER")
                 .build();
 
-        User user = User.builder()
+        UserInfo user = UserInfo.builder()
                 .username(userDto.getUsername())
                 .password(passwordEncoder.encode(userDto.getPassword()))
-                .nickname(userDto.getNickname())
+                .r_name(userDto.getR_name())
+                .phones(userDto.getPhones())
+                .cre_date(userDto.getCre_date())
                 .authorities(Collections.singleton(authority))
                 .activated(true)
                 .build();

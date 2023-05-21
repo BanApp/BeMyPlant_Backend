@@ -2,7 +2,7 @@ package me.silvernine.tutorial.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import me.silvernine.tutorial.entity.User;
+import me.silvernine.tutorial.entity.UserInfo;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -27,16 +27,26 @@ public class UserDto {
 
     @NotNull
     @Size(min = 3, max = 50)
-    private String nickname;
+    private String r_name;
+
+    @NotNull
+    @Size(min = 8, max = 20)
+    private String phones;
+
+    @NotNull
+    @Size(min = 8, max = 30)
+    private String cre_date;
 
     private Set<AuthorityDto> authorityDtoSet;
 
-    public static UserDto from(User user) {
+    public static UserDto from(UserInfo user) {
         if(user == null) return null;
 
         return UserDto.builder()
                 .username(user.getUsername())
-                .nickname(user.getNickname())
+                .r_name(user.getR_name())
+                .phones(user.getPhones())
+                .cre_date(user.getCre_date())
                 .authorityDtoSet(user.getAuthorities().stream()
                         .map(authority -> AuthorityDto.builder().authorityName(authority.getAuthorityName()).build())
                         .collect(Collectors.toSet()))
