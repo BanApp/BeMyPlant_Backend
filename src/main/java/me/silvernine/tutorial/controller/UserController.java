@@ -97,7 +97,6 @@ public class UserController {
         }
     }
 
-
     //사용자 정보 조회
     @GetMapping("/user")
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
