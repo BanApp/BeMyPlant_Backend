@@ -12,6 +12,8 @@ CREATE TABLE authority (
     authority_name VARCHAR(50) PRIMARY KEY
 );
 
+INSERT INTO authority (authority_name) VALUES ('ROLE_ADMIN'), ('ROLE_USER');
+
 CREATE TABLE user_authority (
                                 user_id INT,
                                 authority_name VARCHAR(50),
