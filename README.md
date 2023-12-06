@@ -21,8 +21,14 @@
         <br>
         <img src="https://img.shields.io/badge/pytorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white">&nbsp
         <img src="https://img.shields.io/badge/Transformers-FFAC55?style=flat-square&logo=transformers&logoColor=white"/>&nbsp
+        <br>
+        <br>
+        <img width="1280" alt="" src="https://github.com/BanApp/BeMyPlant_Backend/assets/93313445/583c5b47-e527-41e6-966a-c547d17ce055">
     </div>
 </div>
+
+
+
 
 <h2>Be My Plant!🌿 아키텍쳐</h2>
 <div align="center">
@@ -41,7 +47,7 @@
 <div align="center">
   <div style="display: flex; justify-content: center;">
     <img src="https://github.com/BanApp/BeMyPlant_App/assets/93313445/10122ed8-1cc4-4664-a91a-fa9cd1d3e48c" alt="Be My Plant!🌿 첫 화면" width="200">
-    <img src="https://github.com/BanApp/BeMyPlant_App/assets/93313445/bfd3ec47-3825-4cb5-b5cd-4664bd5e0782" alt="Be My Plant!🌿 메인 UI" width="200">
+    <img src="https://github.com/BanApp/BeMyPlant_Backend/assets/93313445/d19d6531-e840-4ddc-aee7-db3cc5569cf3" alt="Be My Plant!🌿 메인 UI" width="200" height ="433">
     <img src="https://github.com/BanApp/BeMyPlant_App/assets/93313445/bf5e9c49-fab3-413e-8105-b93609b9ad6c" alt="Be My Plant!🌿 식물 다이어리" width="200">
     <img src="https://github.com/BanApp/BeMyPlant_App/assets/93313445/dbc2826d-3a07-4db9-811e-f4e7017169b3" alt="Be My Plant!🌿 식물 센서 조회" width="200">
   </div>
