@@ -26,7 +26,7 @@
 
 <h2>Be My Plant!🌿 아키텍쳐</h2>
 <div align="center">
-    <img width="1920" alt="Be My Plant! 🌿 아키텍쳐" src="https://github.com/BanApp/BeMyPlant_App/assets/93313445/cb63f96d-ac4d-4519-a5d4-791275dc91d4">
+    <img width="1920" alt="Be My Plant! 🌿 아키텍쳐" src="https://github.com/BanApp/BeMyPlant_Backend/assets/93313445/e44bb8bf-a5da-458d-9210-42d3c20cd56a">
     <h3> Be My Plant! 🌿 서비스 API 서버</h3>
     1. JWT 토큰 인증 방식 회원 가입, 로그인<br /><br />
     2. 토큰 인증으로 요청한 아이디와 토큰이 일치할때 해당 아이디명의 Collection에 데이터 삽입.<br /><br />
