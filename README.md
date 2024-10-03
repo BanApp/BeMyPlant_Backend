@@ -68,17 +68,12 @@
     <td height="140px" align="center"> <a href="https://github.com/Minjeongc"><img src="https://avatars.githubusercontent.com/u/87174310?v=4" width="140px" /><br/></a></td>
   </tr>
   <tr>
-      <td align="center">👦🏻 정민준 <br> (팀장: API 백엔드, ML, HW)</td>
-      <td align="center">👦🏻 김규민 <br> (팀원: 앱 프론트엔드, 앱 백엔드)</td>
-      <td align="center">👦🏻 김정현 <br> (팀원: 앱 백엔드, HW)</td>
-      <td align="center">👦🏻 조민정 <br> (팀원: 앱 프론트엔드, 앱 백엔드)</td>
+      <td align="center">👦🏻  <br> (팀장: API 백엔드, ML, HW)</td>
+      <td align="center">👦🏻  <br> (팀원: 앱 프론트엔드, 앱 백엔드)</td>
+      <td align="center">👦🏻  <br> (팀원: 앱 백엔드, HW)</td>
+      <td align="center">👦🏻  <br> (팀원: 앱 프론트엔드, 앱 백엔드)</td>
   </tr>
-  <tr>
-      <td align="center">단국대학교<br/>컴퓨터공학과<br/></td>
-      <td align="center">단국대학교<br/>컴퓨터공학과<br/></td>
-      <td align="center">단국대학교<br/>컴퓨터공학과<br/></td>
-      <td align="center">단국대학교<br/>컴퓨터공학과<br/></td>
-  </tr>
+
 </table>
 <br/><br/>
 
