@@ -5,10 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class JwtTutorialApplication {
+public class BeMyPlantApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JwtTutorialApplication.class, args);
+		SpringApplication.run(BeMyPlantApplication.class, args);
 	}
 
 }
