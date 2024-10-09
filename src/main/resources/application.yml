@@ -1,19 +1,28 @@
+server:
+  port: 8443  # HTTPS 포트
+  ssl:
+    enabled: true  # HTTPS 활성화
+    key-store: classpath:keystore.p12  # keystore 파일의 경로 (src/main/resources에 위치)
+    key-store-password: your_password  # keystore의 비밀번호
+    key-store-type: PKCS12  # keystore의 타입 (PKCS12)
+    key-alias: tomcat  # 인증서 키의 별칭
+
 spring:
   h2:
     console:
-      enabled=false
+      enabled: false
 
   datasource:
     url: jdbc:mariadb://localhost:3306/BMP_User
     driver-class-name: org.mariadb.jdbc.Driver
-    username: 
-    password: 
+    username: your_db_username
+    password: your_db_password
+
   data:
     mongodb:
       host: localhost
       port: 27017
       database: sensor
-
 
   jpa:
     hibernate:
@@ -27,8 +36,8 @@ spring:
 jwt:
   header: Authorization
   #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
-  secret: 
-  token-validity-in-seconds: 
+  secret: your_jwt_secret_key
+  token-validity-in-seconds: 3600  # 토큰의 유효 시간 (초)
 
 logging:
   level:
