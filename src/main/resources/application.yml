@@ -32,4 +32,4 @@ jwt:
 
 logging:
   level:
-    me.silvernine: DEBUG
+    io.bemyplant: DEBUG
