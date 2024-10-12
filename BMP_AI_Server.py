@@ -115,7 +115,7 @@ ALGORITHM = ''
 def verify_token(authorization: str = Header(...)):
     try:
         token = authorization.replace("Bearer ", "")
-        payload = jwt.decode(token, options={"verify_signature": False})
+        payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
         username = payload.get("sub")
 
         # 연결 풀을 사용하여 데이터베이스 연결을 가져오기
